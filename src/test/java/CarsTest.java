@@ -1,11 +1,11 @@
 import baby.BabyYear4;
-import cars.BaseCar;
-import cars.BmwImpl;
-import cars.Car;
+import cars.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CarsTest {
 
@@ -16,5 +16,27 @@ public class CarsTest {
         BabyYear4 baby = new BabyYear4();
 
         BaseCar basecar = new BmwImpl();
+
+        Lada lada = new Lada(CarType.POOR);
+
+        String stringValue = lada.type.toString();
+
+        switch (lada.type) {
+            case FBR:
+                // do something
+                break;
+            case VIP:
+                // do something
+                break;
+            case POOR:
+                // do something
+                break;
+        }
+
+        Map<Car,CarType> carTypes = new HashMap<>();
+
+        carTypes.put(new BmwImpl(),CarType.VIP);
+
+
     }
 }
