@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CommonTest {
 
     @Test
@@ -102,5 +105,39 @@ public class CommonTest {
                 System.out.print("default");
                 break;
         }
+    }
+
+    @Test
+    public void loop_repeating() {
+        int nums[] = new int[]{3, 2, 8, 2, 4, 5, 8, 1};
+
+        for (int repeater : nums) {
+
+            for (int i = 0; i < nums.length - 1; i++) {
+                int first = nums[i];
+                int second = nums[i + 1];
+                if (first < second) {
+                    nums[i] = second;
+                    nums[i + 1] = first;
+                }
+            }
+
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i] + ",");
+        }
+        System.out.println();
+        for (int numer : nums) {
+            System.out.print(numer + ";");
+        }
+
+        for (int numer : nums) {
+            if (numer == 4) {
+                System.out.print("founded " + numer + ";");
+                break;
+            }
+        }
+
     }
 }

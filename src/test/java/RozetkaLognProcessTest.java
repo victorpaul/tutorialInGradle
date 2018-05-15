@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import javax.xml.xpath.XPath;
+import java.util.List;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -40,7 +43,39 @@ public class RozetkaLognProcessTest extends BaseTest {
 
         chrome.get("https://rozetka.com.ua/ua/");
         chrome.findElement(loginButton).click();
-        assertTrue(chrome.findElement(popup).isDisplayed());
+        assertTrue(chrome.findElement(popup).isDisplayed()); // sf
 
+        int columnPositionOfTopRow = 0; // this is
+        WebElement table = chrome.findElement(loginButton);
+        List<WebElement> tds = table.findElements(By.xpath("/tbody/tr[1]"));
+        for (int i = 0; i <= tds.size(); i++) {
+            if (tds.get(i).getText().equals("credit 25 mes")) {
+                columnPositionOfTopRow = i;
+                break;
+            }
+        }
+
+
+    }
+
+    @Test
+    public void find_positions() {
+        chrome.get("https://rozetka.com.ua/ua/credit/");
+        List<WebElement> rows = chrome.findElements(
+                By.xpath("//div[@class='rz-credit-block'][1]/table/tbody/tr[@class='rz-credit-terms-tr']")
+        );
+
+        assertEquals(10, rows.size());
+
+        String lookingFor = "0,01% на 20 місяців";
+        List<WebElement> foundedCols = null;
+        for (int i = 0; i < rows.size(); i++) {
+            WebElement row = rows.get(i);
+            WebElement col1 = row.findElement(By.xpath("td[1]"));
+            String text = col1.getText();
+            if (lookingFor.equals(text)) {
+                foundedCols = row.findElements(By.xpath("td"));
+            }
+        }
     }
 }

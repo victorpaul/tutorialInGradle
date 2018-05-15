@@ -2,7 +2,30 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static org.testng.AssertJUnit.assertEquals;
+
 public class CollectionTest {
+
+    @Test
+    public void collections() {
+        User user1 = new User();
+        User user2 = new User();
+
+        List<User> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
+
+        User userOne = users.get(0);
+
+        user1.email = "em@gmail";
+        user2.email = "em@yahoo";
+
+        assertEquals(user1.email, "em@em");
+        assertEquals(users.get(0).email, "em@em");
+        assertEquals(userOne.email, "em@em");
+
+
+    }
 
     @Test
     public void check() {

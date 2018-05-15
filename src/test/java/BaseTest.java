@@ -11,6 +11,7 @@ public abstract class BaseTest {
     public static void beforeClass() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\victor\\java\\hahahahahah\\src\\test\\resources\\chromedriver.exe");
         chrome = new ChromeDriver();
+
     }
 
     @AfterClass
