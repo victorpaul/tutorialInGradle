@@ -7,6 +7,7 @@ public class BabyYear4 extends BabyYearTwo {
         return "hnuk";
     }
 
+    @Deprecated
     public void run() {
 
     }

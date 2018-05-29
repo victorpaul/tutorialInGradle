@@ -1,5 +1,7 @@
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -139,5 +141,17 @@ public class CommonTest {
             }
         }
 
+    }
+
+    @Test
+    public void loop_repeating_2() {
+        int nums[] = new int[]{9, 4, 1, 7, 3, 5, 2, 8, 1};
+        List<String> words = Arrays.asList("hello", "world", "!");
+
+        for (int num : nums) {
+            System.out.println(num);
+        }
+
+        List<WebElement> els = new ArrayList<>();
     }
 }
